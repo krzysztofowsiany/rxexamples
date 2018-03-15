@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Threading;
+using RXExamples.Own;
+using RXExamples.Timers;
 
 namespace RXExamples
 {
@@ -7,34 +8,19 @@ namespace RXExamples
 	{
 		private object _obj;
 
-		public Application(Object obj, Clock clock, Clock2 clock2)
+		public Application(OwnObservable observable, OwnObserver observer, Clock clock)
 		{
-			_obj = obj;
-			Console.CursorVisible = false;
+			observable.Subscribe(t =>
+			{
+				Console.WriteLine(t);
+			});
 		}
 
 		public void WaitForKeyPress()
 		{
 			Console.SetCursorPosition(0, Console.WindowHeight - 1);
-			Console.WriteLine("Press space key to exit");
-
-			var counter = 0;
-
-			ConsoleKeyInfo consoleKeyInfo;
-			{
-				while (!Console.KeyAvailable)
-				{
-					lock (_obj)
-					{
-						Console.SetCursorPosition(0, Console.WindowHeight - 2);
-						Console.WriteLine(counter++);
-					}
-
-					Thread.Sleep(150);
-				}
-				consoleKeyInfo = Console.ReadKey(true);
-			}
-			while (consoleKeyInfo.Key != ConsoleKey.Spacebar) ;
+			Console.WriteLine("Press any key to exit");
+			Console.ReadKey();
 		}
 	}
 }

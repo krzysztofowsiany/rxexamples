@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace RXExamples
+namespace RXExamples.Timers
 {
 	public class Clock2
 	{
@@ -15,7 +15,6 @@ namespace RXExamples
 			{
 				lock (_obj)
 				{
-					Console.BackgroundColor = ConsoleColor.Gray;
 					Console.ForegroundColor = ConsoleColor.Black;
 
 					Console.SetCursorPosition(Console.WindowWidth - 12, 2);

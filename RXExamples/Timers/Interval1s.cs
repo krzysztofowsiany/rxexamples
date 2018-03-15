@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reactive.Linq;
 
-namespace RXExamples
+namespace RXExamples.Timers
 {
 	public class Interval1s
 	{

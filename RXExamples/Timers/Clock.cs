@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Diagnostics;
+using RXExamples.Own;
 
-namespace RXExamples
+namespace RXExamples.Timers
 {
 	public class Clock
 	{
 		private object _obj;
 
-		public Clock(Interval1s interval, Object obj)
+		public Clock(Interval1s interval, Object obj, OwnObserver observer)
 		{
 			_obj = obj;
 
@@ -15,7 +16,6 @@ namespace RXExamples
 			{
 				lock (_obj)
 				{
-					Console.BackgroundColor = ConsoleColor.Gray;
 					Console.ForegroundColor = ConsoleColor.Black;
 
 					Console.SetCursorPosition(Console.WindowWidth - 8, 0);
@@ -25,6 +25,8 @@ namespace RXExamples
 					Debug.WriteLine(timeText);
 					Console.WriteLine(timeText);
 					Console.Title = timeText;
+
+					observer.OnNext(timeText);
 				}
 			});
 		}
