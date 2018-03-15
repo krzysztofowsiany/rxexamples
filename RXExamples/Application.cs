@@ -1,39 +1,29 @@
 ﻿using System;
-using System.Reactive.Linq;
+using System.Threading;
 
 namespace RXExamples
 {
 	public class Application
 	{
-		private IDisposable _subscribent1;
-		private IDisposable _subscribent2;
-
 		public Application()
 		{
-			var interval = Observable.Interval(TimeSpan.FromSeconds(1));
 
-			_subscribent1 = interval
-				.TimeInterval()
-				.Subscribe(tick =>
-				{
-					Console.WriteLine($"Tick 1: {tick}");
-				});
-
-			_subscribent2 = interval
-				.Sample(TimeSpan.FromSeconds(4))
-				.Subscribe(tick =>
-				{
-					Console.WriteLine($"Tick 2: {tick}");
-				});
 		}
 
 		public void WaitForKeyPress()
 		{
-			Console.WriteLine("Press any key to exit");
-			Console.ReadKey();
+			Console.WriteLine("Press space key to exit");
 
-			_subscribent1.Dispose();
-			_subscribent2.Dispose();
+			ConsoleKeyInfo consoleKeyInfo;
+			do
+			{
+				while (!Console.KeyAvailable)
+				{
+					Thread.Sleep(150);
+				}
+				consoleKeyInfo = Console.ReadKey(true);
+			}
+			while (consoleKeyInfo.Key != ConsoleKey.Spacebar);
 		}
 	}
 }
