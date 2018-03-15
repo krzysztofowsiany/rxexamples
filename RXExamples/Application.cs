@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Threading;
+using RXExamples.Own;
+using RXExamples.Timers;
 
 namespace RXExamples
 {
@@ -7,10 +8,14 @@ namespace RXExamples
 	{
 		private object _obj;
 
-		public Application(Object obj, Clock clock, Clock2 clock2)
+		public Application(Object obj, OwnObservable observable, OwnObserver observer, Clock clock)
 		{
 			_obj = obj;
 			Console.CursorVisible = false;
+			observable.Subscribe(t =>
+			{
+				Console.WriteLine(t);
+			});
 		}
 
 		public void WaitForKeyPress()

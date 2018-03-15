@@ -2,6 +2,8 @@
 using System;
 using System.Reactive.Linq;
 using Autofac;
+using RXExamples.Own;
+using RXExamples.Timers;
 
 namespace RXExamples
 {
@@ -22,6 +24,12 @@ namespace RXExamples
 				.SingleInstance();
 
 			builder.RegisterType<Interval1s>()
+				.SingleInstance();
+
+			builder.RegisterType<OwnObserver>()
+				.SingleInstance();
+
+			builder.RegisterType<OwnObservable>()
 				.SingleInstance();
 		}
 	}
