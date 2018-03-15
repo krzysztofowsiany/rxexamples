@@ -34,9 +34,6 @@ namespace RXExamples.Own
 
 		public void OnNext(string value)
 		{
-			Console.SetCursorPosition(0, 2);
-
-			Console.WriteLine($"Own: {value}");
 		}
 	}
 }

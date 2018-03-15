@@ -75,6 +75,15 @@
   <ItemGroup>
     <Compile Include="Application.cs" />
     <Compile Include="AutoFacModule.cs" />
+    <Compile Include="Domain\Position.cs" />
+    <Compile Include="Domain\UpdatePosition.cs" />
+    <Compile Include="Listeners\MoveDownListener.cs" />
+    <Compile Include="Listeners\MoveUpListener.cs" />
+    <Compile Include="Listeners\MoveLeftListener.cs" />
+    <Compile Include="Listeners\MoveRightListener.cs" />
+    <Compile Include="Listeners\PositionListener.cs" />
+    <Compile Include="Observables\PositionObservable.cs" />
+    <Compile Include="Own\ConsoleKeyObservable.cs" />
     <Compile Include="Timers\Clock.cs" />
     <Compile Include="Timers\Clock2.cs" />
     <Compile Include="Timers\Interval1s.cs" />
