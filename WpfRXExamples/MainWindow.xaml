@@ -7,6 +7,21 @@
         Title="MainWindow" Height="350" Width="525"
         Name="TestWindow">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0" Click="Button_Click">Fibonacci</Button>
+        <Button Name="FibonacciButton" Grid.Row="1">Fibonacci RX</Button>
+
+        <TextBox Name="TextBox1" Grid.Row="2"/>
+
+        <Label Grid.Row="3" Name="Label1" Content="{Binding Path=Label, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Button Name="ExitButton" Grid.Row="4">Exit</Button>
     </Grid>
 </Window>

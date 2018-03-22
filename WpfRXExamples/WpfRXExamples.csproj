@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Reactive.Core, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Reactive.Core.3.1.1\lib\net45\System.Reactive.Core.dll</HintPath>
       <Private>True</Private>
@@ -76,7 +77,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Events\CalculatedEvent.cs" />
+    <Compile Include="Events\CalculationStartedEvent.cs" />
+    <Compile Include="Events\ApplicationExitedEvent.cs" />
+    <Compile Include="Events\EventType.cs" />
+    <Compile Include="Events\IEvent.cs" />
+    <Compile Include="ExtensionsMethods\CalculationExtensions.cs" />
+    <Compile Include="Observables\EventObservable.cs" />
     <Compile Include="Observables\Unsubscribe.cs" />
+    <Compile Include="Observers\CalculateObserver.cs" />
+    <Compile Include="Observers\ExitObserver.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -91,6 +101,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Observers\SaveObservable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
