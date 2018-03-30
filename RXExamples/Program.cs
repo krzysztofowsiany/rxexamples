@@ -1,4 +1,5 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 
 namespace RXExamples
 {
@@ -6,6 +7,10 @@ namespace RXExamples
 	{
 		static void Main()
 		{
+			Console.BackgroundColor = ConsoleColor.Black;
+			Console.ForegroundColor = ConsoleColor.White;
+			Console.Clear();
+
 			var builder = new ContainerBuilder();
 			builder.RegisterModule<AutoFacModule>();
 			var container = builder.Build();
