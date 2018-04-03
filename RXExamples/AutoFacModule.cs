@@ -1,9 +1,4 @@
-﻿
-using System;
-using System.Reactive.Linq;
-using Autofac;
-using RXExamples.Own;
-using RXExamples.Timers;
+﻿using Autofac;
 
 namespace RXExamples
 {
@@ -13,24 +8,6 @@ namespace RXExamples
 		{
 			builder.RegisterType<Application>();
 
-			builder.RegisterInstance(new Object())
-				.SingleInstance();
-
-			builder.RegisterType<Clock>();
-			builder.RegisterType<Clock2>();
-
-			builder.RegisterInstance(Observable.Interval(TimeSpan.FromMilliseconds(10)))
-				.As<IObservable<long>>()
-				.SingleInstance();
-
-			builder.RegisterType<Interval1s>()
-				.SingleInstance();
-
-			builder.RegisterType<OwnObserver>()
-				.SingleInstance();
-
-			builder.RegisterType<OwnObservable>()
-				.SingleInstance();
 		}
 	}
 }
