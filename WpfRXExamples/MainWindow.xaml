@@ -15,7 +15,7 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="0" Click="Button_Click">Fibonacci</Button>
+        <Button Grid.Row="0" Click="FibonacciButton_Click">Fibonacci</Button>
         <Button Name="FibonacciButton" Grid.Row="1">Fibonacci RX</Button>
 
         <TextBox Name="TextBox1" Grid.Row="2"/>
