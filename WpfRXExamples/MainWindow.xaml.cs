@@ -16,9 +16,9 @@ namespace WpfRXExamples
 
 		}
 
-		private void Button_Click(object sender, RoutedEventArgs e)
+		private void FibonacciButton_Click(object sender, RoutedEventArgs e)
 		{
-			long number = 45;
+			var number = 45L;
 			var result = number.Fibonacci();
 			Debug.WriteLine($"Fibonnaci for number: {number} are: {result}");
 		}
