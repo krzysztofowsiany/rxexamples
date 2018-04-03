@@ -2,13 +2,10 @@
 {
 	public struct ApplicationExitedEvent : IEvent
 	{
-		public EventType Type { get; set; }
-
 		public int ExitCode { get; set; }
 
 		private ApplicationExitedEvent(int exitCode)
 		{
-			Type = EventType.ApplicationKilled;
 			ExitCode = exitCode;
 		}
 

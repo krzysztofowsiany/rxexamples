@@ -80,7 +80,6 @@
     <Compile Include="Events\CalculatedEvent.cs" />
     <Compile Include="Events\CalculationStartedEvent.cs" />
     <Compile Include="Events\ApplicationExitedEvent.cs" />
-    <Compile Include="Events\EventType.cs" />
     <Compile Include="Events\IEvent.cs" />
     <Compile Include="ExtensionsMethods\CalculationExtensions.cs" />
     <Compile Include="Observables\EventObservable.cs" />

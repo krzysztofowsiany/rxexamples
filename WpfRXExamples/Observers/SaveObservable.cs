@@ -6,19 +6,15 @@ namespace WpfRXExamples.Observers
 {
 	public class SaveObservable : IObserver<IEvent>
 	{
-		public void OnCompleted()
-		{
-		}
-
-		public void OnError(Exception error)
-		{
-		}
-
 		public void OnNext(IEvent @event)
 		{
 			Debug.WriteLine("Observer: " + GetType());
 
 			Debug.WriteLine("Save data before exit");
 		}
+
+		public void OnCompleted() { }
+
+		public void OnError(Exception error) { }
 	}
 }

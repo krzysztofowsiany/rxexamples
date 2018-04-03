@@ -16,16 +16,6 @@ namespace WpfRXExamples.Observers
 			_eventBus = eventBus;
 		}
 
-		public void OnCompleted()
-		{
-		}
-
-		public void OnError(Exception error)
-		{
-		}
-
-		
-
 		public void OnNext(IEvent @event)
 		{
 			Debug.WriteLine("Observer: " + GetType());
@@ -41,5 +31,9 @@ namespace WpfRXExamples.Observers
 					_eventBus.Push(CalculatedEvent.Create(result, calculationStartedEvent.Data, calculationTime));
 				});
 		}
+
+		public void OnCompleted() { }
+
+		public void OnError(Exception error) { }
 	}
 }
