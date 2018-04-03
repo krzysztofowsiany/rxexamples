@@ -1,37 +1,31 @@
 ﻿using System;
-using System.Reactive.Linq;
 using RXExamples.Domain;
+using RXExamples.ExtensionMethods;
 using RXExamples.Observables;
-using RXExamples.Own;
 
-namespace RXExamples.Listeners
+namespace RXExamples.Observers
 {
-	public class MoveUpListener : IObserver<ConsoleKey>
+	public class MoveUpObserver : IObserver<ConsoleKey>
 	{
 		private PositionObservable _positionObservable;
 
-		public MoveUpListener(
+		public MoveUpObserver(
 			ConsoleKeyObservable observable,
 			PositionObservable positionObservable)
 		{
 			_positionObservable = positionObservable;
 			observable
-				.Where(x => x.Key == ConsoleKey.B)
-				.Select(x => x.Key)
+				.MoveUp()
 				.Subscribe(this);
-		}
-
-		public void OnCompleted()
-		{
-		}
-
-		public void OnError(Exception error)
-		{
 		}
 
 		public void OnNext(ConsoleKey value)
 		{
 			_positionObservable.Publish(UpdatePosition.Create(0, -1));
 		}
+
+		public void OnCompleted() { }
+
+		public void OnError(Exception error) { }
 	}
 }

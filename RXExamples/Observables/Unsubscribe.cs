@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace RXExamples.Own
+namespace RXExamples.Observables
 {
 	public class Unsubscribe<T> : IDisposable
 	{

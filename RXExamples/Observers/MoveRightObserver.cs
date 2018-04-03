@@ -1,37 +1,31 @@
 ﻿using System;
-using System.Reactive.Linq;
 using RXExamples.Domain;
+using RXExamples.ExtensionMethods;
 using RXExamples.Observables;
-using RXExamples.Own;
 
-namespace RXExamples.Listeners
+namespace RXExamples.Observers
 {
-	public class MoveRightListener : IObserver<ConsoleKey>
+	public class MoveRightObserver : IObserver<ConsoleKey>
 	{
 		private PositionObservable _positionObservable;
 
-		public MoveRightListener(
+		public MoveRightObserver(
 			ConsoleKeyObservable observable,
 			PositionObservable positionObservable)
 		{
 			_positionObservable = positionObservable;
 			observable
-				.Where(x => x.Key == ConsoleKey.PageDown)
-				.Select(x => x.Key)
+				.MoveRight()
 				.Subscribe(this);
-		}
-
-		public void OnCompleted()
-		{
-		}
-
-		public void OnError(Exception error)
-		{
 		}
 
 		public void OnNext(ConsoleKey value)
 		{
 			_positionObservable.Publish(UpdatePosition.Create(1, 0));
 		}
+
+		public void OnCompleted() { }
+
+		public void OnError(Exception error) { }
 	}
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using RXExamples.Domain;
-using RXExamples.Own;
 
 namespace RXExamples.Observables
 {

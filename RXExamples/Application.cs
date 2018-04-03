@@ -1,5 +1,5 @@
 ﻿using System;
-using RXExamples.Own;
+using RXExamples.Observables;
 
 namespace RXExamples
 {

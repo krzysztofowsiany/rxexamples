@@ -77,11 +77,12 @@
     <Compile Include="AutoFacModule.cs" />
     <Compile Include="Domain\Position.cs" />
     <Compile Include="Domain\UpdatePosition.cs" />
-    <Compile Include="Listeners\MoveDownListener.cs" />
-    <Compile Include="Listeners\MoveUpListener.cs" />
-    <Compile Include="Listeners\MoveLeftListener.cs" />
-    <Compile Include="Listeners\MoveRightListener.cs" />
-    <Compile Include="Listeners\PositionListener.cs" />
+    <Compile Include="ExtensionMethods\ConsoleKeyExtensions.cs" />
+    <Compile Include="Observers\MoveDownObserver.cs" />
+    <Compile Include="Observers\MoveUpObserver.cs" />
+    <Compile Include="Observers\MoveLeftObserver.cs" />
+    <Compile Include="Observers\MoveRightObserver.cs" />
+    <Compile Include="Observers\PositionObserver.cs" />
     <Compile Include="Observables\PositionObservable.cs" />
     <Compile Include="Own\ConsoleKeyObservable.cs" />
     <Compile Include="Timers\Clock.cs" />
@@ -94,7 +95,9 @@
     <Compile Include="Own\Unsubscribe.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

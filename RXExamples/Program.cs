@@ -1,6 +1,6 @@
 ﻿using System;
 using Autofac;
-using RXExamples.Listeners;
+using RXExamples.Observers;
 
 namespace RXExamples
 {
@@ -16,11 +16,11 @@ namespace RXExamples
 			builder.RegisterModule<AutoFacModule>();
 			var container = builder.Build();
 
-			container.Resolve<MoveRightListener>();
-			container.Resolve<MoveLeftListener>();
-			container.Resolve<MoveUpListener>();
-			container.Resolve<MoveDownListener>();
-			container.Resolve<PositionListener>();
+			container.Resolve<MoveRightObserver>();
+			container.Resolve<MoveLeftObserver>();
+			container.Resolve<MoveUpObserver>();
+			container.Resolve<MoveDownObserver>();
+			container.Resolve<PositionObserver>();
 
 			var application = container.Resolve<Application>();
 			

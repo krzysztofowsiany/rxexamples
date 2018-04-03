@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 
-namespace RXExamples.Own
+namespace RXExamples.Observables
 {
 	public class ConsoleKeyObservable : IObservable<ConsoleKeyInfo>
 	{

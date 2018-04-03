@@ -2,10 +2,8 @@
 using System;
 using System.Reactive.Linq;
 using Autofac;
-using RXExamples.Domain;
-using RXExamples.Listeners;
+using RXExamples.Observers;
 using RXExamples.Observables;
-using RXExamples.Own;
 using RXExamples.Timers;
 
 namespace RXExamples
@@ -29,17 +27,11 @@ namespace RXExamples
 			builder.RegisterType<Interval1s>()
 				.SingleInstance();
 
-			builder.RegisterType<OwnObserver>()
-				.SingleInstance();
-
-			builder.RegisterType<OwnObservable>()
-				.SingleInstance();
-
-			builder.RegisterType<MoveRightListener>().AsSelf();
-			builder.RegisterType<MoveLeftListener>().AsSelf();
-			builder.RegisterType<MoveUpListener>().AsSelf();
-			builder.RegisterType<MoveDownListener>().AsSelf();
-			builder.RegisterType<PositionListener>().AsSelf();
+			builder.RegisterType<MoveRightObserver>().AsSelf();
+			builder.RegisterType<MoveLeftObserver>().AsSelf();
+			builder.RegisterType<MoveUpObserver>().AsSelf();
+			builder.RegisterType<MoveDownObserver>().AsSelf();
+			builder.RegisterType<PositionObserver>().AsSelf();
 
 			builder.RegisterType<ConsoleKeyObservable>().SingleInstance();
 			builder.RegisterType<PositionObservable>().SingleInstance();
