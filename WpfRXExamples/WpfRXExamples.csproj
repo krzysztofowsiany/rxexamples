@@ -77,11 +77,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Events\CalculatedEvent.cs" />
-    <Compile Include="Events\CalculationStartedEvent.cs" />
-    <Compile Include="Events\ApplicationExitedEvent.cs" />
-    <Compile Include="Events\EventType.cs" />
-    <Compile Include="Events\IEvent.cs" />
     <Compile Include="ExtensionsMethods\CalculationExtensions.cs" />
     <Compile Include="Observables\Unsubscribe.cs" />
     <Page Include="MainWindow.xaml">
@@ -126,6 +121,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Events\" />
     <Folder Include="Observers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
