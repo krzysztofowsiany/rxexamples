@@ -5,17 +5,17 @@ namespace RXExamples
 {
 	public class Application
 	{
-		private ConsoleKeyObservable _observable;
+		private ConsoleKeyObservable _consoleKeyObservable;
 
-		public Application(ConsoleKeyObservable observable)
+		public Application(ConsoleKeyObservable consoleKeyObservable)
 		{
-			_observable = observable;
+			_consoleKeyObservable = consoleKeyObservable;
 			Console.CursorVisible = false;
 		}
 
 		public void WaitForKeyPress()
 		{
-			_observable.StartStream();
+			_consoleKeyObservable.StartStream();
 
 			Console.SetCursorPosition(0, Console.WindowHeight - 1);
 			Console.WriteLine("Press space key to exit");

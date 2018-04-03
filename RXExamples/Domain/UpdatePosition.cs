@@ -2,16 +2,13 @@
 {
 	public class UpdatePosition
 	{
-		private int _updateX;
-		private int _updateY;
-
-		public int UpdateX => _updateX;
-		public int UpdateY => _updateY;
+		public int UpdateX { get; }
+		public int UpdateY { get;  }
 
 		private UpdatePosition(int updateX, int updateY)
 		{
-			_updateX = updateX;
-			_updateY = updateY;
+			UpdateX = updateX;
+			UpdateY = updateY;
 		}
 		
 		internal static UpdatePosition Create(int updateX, int updateY)

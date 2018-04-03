@@ -1,10 +1,6 @@
-﻿
-using System;
-using System.Reactive.Linq;
-using Autofac;
+﻿using Autofac;
 using RXExamples.Observers;
 using RXExamples.Observables;
-using RXExamples.Timers;
 
 namespace RXExamples
 {
@@ -13,19 +9,6 @@ namespace RXExamples
 		protected override void Load(ContainerBuilder builder)
 		{
 			builder.RegisterType<Application>();
-
-			builder.RegisterInstance(new Object())
-				.SingleInstance();
-
-			builder.RegisterType<Clock>();
-			builder.RegisterType<Clock2>();
-
-			builder.RegisterInstance(Observable.Interval(TimeSpan.FromMilliseconds(10)))
-				.As<IObservable<long>>()
-				.SingleInstance();
-
-			builder.RegisterType<Interval1s>()
-				.SingleInstance();
 
 			builder.RegisterType<MoveRightObserver>().AsSelf();
 			builder.RegisterType<MoveLeftObserver>().AsSelf();

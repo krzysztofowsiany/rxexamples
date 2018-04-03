@@ -10,11 +10,11 @@ namespace RXExamples.Observers
 		private PositionObservable _positionObservable;
 
 		public MoveUpObserver(
-			ConsoleKeyObservable observable,
+			ConsoleKeyObservable consoleKeyObservable,
 			PositionObservable positionObservable)
 		{
 			_positionObservable = positionObservable;
-			observable
+			consoleKeyObservable
 				.MoveUp()
 				.Subscribe(this);
 		}

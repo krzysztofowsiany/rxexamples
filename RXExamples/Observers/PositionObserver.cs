@@ -26,7 +26,7 @@ namespace RXExamples.Observers
 		private void Draw()
 		{
 			Console.Clear();
-			Console.SetCursorPosition(_position.GetLeft(), _position.GetTop());
+			Console.SetCursorPosition(_position.Left, _position.Top);
 			Console.Write("#");
 		}
 

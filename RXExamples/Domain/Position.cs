@@ -4,54 +4,43 @@ namespace RXExamples.Domain
 {
 	public class Position
 	{
-		private int _left;
-		private int _top;
+		public int Left { get; private set; }
+		public int Top { get; private set; }
 
 		private Position(int left, int top)
 		{
-			_left = left;
-			_top = top;
-		}
-		
-		public int GetLeft()
-		{
-			return _left;
-		}
-
-		public int GetTop()
-		{
-			return _top;
+			Left = left;
+			Top = top;
 		}
 
 		public void Update(UpdatePosition updatePosition)
 		{
-			UpdateX(updatePosition.UpdateX);
-			UpdateY(updatePosition.UpdateY);
+			Left += updatePosition.UpdateX;
+			Top += updatePosition.UpdateY;
+
+			CheckLeft();
+			CheckTop();
 		}
 
-		private void UpdateX(int updateX)
+		private void CheckLeft()
 		{
-			_left += updateX;
+			if (Left > Console.WindowWidth)
+				Left = 0;
 
-			if (_left > Console.WindowWidth)
-				_left = 0;
-
-			if (_left < 0)
-				_left = Console.WindowWidth;
+			if (Left < 0)
+				Left = Console.WindowWidth;
 		}
 
-		private void UpdateY(int updateY)
+		private void CheckTop()
 		{
-			_top += updateY;
+			if (Top > Console.WindowHeight)
+				Top = 0;
 
-			if (_top > Console.WindowHeight)
-				_top = 0;
-
-			if (_top < 0)
-				_top = Console.WindowHeight;
+			if (Top < 0)
+				Top = Console.WindowHeight;
 		}
 
-		public static Position Create(int left = 0, int top = 0) 
+		public static Position Create(int left = 0, int top = 0)
 			=> new Position(left, top);
 	}
 }
