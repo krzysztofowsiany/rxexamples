@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WpfRXExamples.Observables
+namespace WpfRXExamples
 {
 	internal class Unsubscribe<T> : IDisposable
 	{

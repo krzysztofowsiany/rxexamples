@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Windows;
 using WpfRXExamples.ExtensionsMethods;
+using System.Reactive;
 
 namespace WpfRXExamples
 {
