@@ -81,12 +81,15 @@ namespace WpfRXExamples
 
 			eventBus
 				.Where(x => x is CalculatedEvent)
+				.ObserveOnDispatcher()
 				.Subscribe(x =>
 				{
 					var calculatedEvent = (CalculatedEvent) x;
 
 					var time = TimeSpan.FromTicks(calculatedEvent.Time);
-					Debug.WriteLine($"FibonnaciRx for number: {calculatedEvent.Number} are: {calculatedEvent.Result}, time: {time}");
+					var result = $"Fib for: {calculatedEvent.Number} are: {calculatedEvent.Result}, time: {time}";
+					Label2.Content = result;
+					Debug.WriteLine(result);
 				});
 
 
