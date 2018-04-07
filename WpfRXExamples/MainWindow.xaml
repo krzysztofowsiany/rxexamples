@@ -4,24 +4,34 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfRXExamples"
-        Title="MainWindow" Height="350" Width="525"
-        Name="TestWindow">
-    <Grid>
+        Title="MainWindow" Height="350" Width="617.227"
+        Name="TestWindow"  FontSize="20">
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Button Grid.Row="0" Click="FibonacciButton_Click">Fibonacci</Button>
         <Button Name="FibonacciButton" Grid.Row="1">Fibonacci RX</Button>
 
-        <TextBox Name="TextBox1" Grid.Row="2"/>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left">
+            <Label Width="100">TextBox</Label>
+            <TextBox Name="TextBox1" Width="508"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left">
+            <Label Width="100">Label1</Label>
+            <Label Name="Label1" Content="{Binding Path=Label, UpdateSourceTrigger=PropertyChanged}" Width="505"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Left">
+            <Label Width="100">Label2</Label>
+            <Label Name="Label2" Content="{Binding Path=Label, UpdateSourceTrigger=PropertyChanged}" Width="506"/>
+        </StackPanel>
 
-        <Label Grid.Row="3" Name="Label1" Content="{Binding Path=Label, UpdateSourceTrigger=PropertyChanged}"/>
-
-        <Button Name="ExitButton" Grid.Row="4">Exit</Button>
+        <Button Name="ExitButton" Grid.Row="5">Exit</Button>
     </Grid>
 </Window>
