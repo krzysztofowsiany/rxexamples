@@ -3,6 +3,9 @@ using System.Diagnostics;
 using System.Windows;
 using WpfRXExamples.ExtensionsMethods;
 using System.Reactive;
+using System.Reactive.Concurrency;
+using System.Reactive.Linq;
+using System.Threading;
 
 namespace WpfRXExamples
 {
