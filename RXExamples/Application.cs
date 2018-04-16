@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reactive.Linq;
 using System.Threading;
 using RXExamples.Own;
 using RXExamples.Timers;
@@ -7,41 +8,48 @@ namespace RXExamples
 {
 	public class Application
 	{
-		private object _obj;
-
-		public Application(Object obj, OwnObservable observable, OwnObserver observer, Clock clock)
+		public Application(
+			OwnObservable observable,
+			OwnSubject subject,
+			Clock clock,
+			Interval5s interval5s)
 		{
-			_obj = obj;
 			Console.CursorVisible = false;
-			observable.Subscribe(t =>
+
+			observable.Subscribe(text =>
 			{
-				Console.WriteLine(t);
+				Console.ForegroundColor = ConsoleColor.Green;
+				Console.WriteLine($"OwnObservable-lambda: {text}");
 			});
+			observable.Subscribe(new OwnObserver("from OwnObservable"));
+
+			subject.Subscribe(text =>
+			{
+				Console.ForegroundColor = ConsoleColor.Green;
+				Console.WriteLine($"OwnSubject-lambda: {text}");
+			});
+			subject.Subscribe(new OwnObserver("from OwnSubject"));
+
+			interval5s
+				.Timer
+				.Select(tick => tick.ToString())
+				.Subscribe(subject);
 		}
 
 		public void WaitForKeyPress()
 		{
-			Console.SetCursorPosition(0, Console.WindowHeight - 1);
 			Console.WriteLine("Press space key to exit");
-
-			var counter = 0;
 
 			ConsoleKeyInfo consoleKeyInfo;
 			do
 			{
 				while (!Console.KeyAvailable)
 				{
-					lock (_obj)
-					{
-						Console.SetCursorPosition(0, Console.WindowHeight - 2);
-						Console.WriteLine(counter++);
-					}
-
 					Thread.Sleep(150);
 				}
 				consoleKeyInfo = Console.ReadKey(true);
 			}
-			while (consoleKeyInfo.Key != ConsoleKey.Spacebar) ;
+			while (consoleKeyInfo.Key != ConsoleKey.Spacebar);
 		}
 	}
 }

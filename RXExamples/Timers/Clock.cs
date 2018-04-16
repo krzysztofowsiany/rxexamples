@@ -4,31 +4,31 @@ using RXExamples.Own;
 
 namespace RXExamples.Timers
 {
-	public class Clock
+	public class Clock : IDisposable
 	{
-		private object _obj;
+		private IDisposable _subscription;
 
-		public Clock(Interval1s interval, Object obj, OwnObserver observer)
+		public Clock(Interval1s interval, OwnSubject subject)
 		{
-			_obj = obj;
-
-			interval.Timer.Subscribe(time =>
+			_subscription = interval.Timer.Subscribe(time =>
 			{
-				lock (_obj)
-				{
-					Console.ForegroundColor = ConsoleColor.Black;
+				Console.ForegroundColor = ConsoleColor.White;
 
-					Console.SetCursorPosition(Console.WindowWidth - 8, 0);
+				var timeSpan = TimeSpan.FromSeconds(time);
+				var timeText = timeSpan.ToString(@"hh\:mm\:ss");
 
-					var timeSpan = TimeSpan.FromSeconds(time);
-					var timeText = timeSpan.ToString(@"hh\:mm\:ss");
-					Debug.WriteLine(timeText);
-					Console.WriteLine(timeText);
-					Console.Title = timeText;
+				Console.WriteLine("");
+				Console.WriteLine(timeText);
 
-					observer.OnNext(timeText);
-				}
+				Console.Title = timeText;
+
+				subject.Push(timeText);
 			});
+		}
+
+		public void Dispose()
+		{
+			_subscription?.Dispose();
 		}
 	}
 }

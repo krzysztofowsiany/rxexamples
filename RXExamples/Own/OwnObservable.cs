@@ -21,5 +21,13 @@ namespace RXExamples.Own
 
 			return new Unsubscribe<string>(_observers, observer);
 		}
+
+		public void Push(string text)
+		{
+			foreach (var observer in _observers)
+			{
+				observer.OnNext(text);
+			}
+		}
 	}
 }

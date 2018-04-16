@@ -5,38 +5,20 @@ namespace RXExamples.Own
 {
 	public class OwnObserver : IObserver<string>
 	{
-		private IDisposable unsubscriber;
+		private string _name;
 
-		public OwnObserver(OwnObservable observable)
+		public OwnObserver(string name)
 		{
-			observable.Subscribe(this);
+			_name = name;
 		}
-
-		public virtual void Subscribe(IObservable<string> provider)
-		{
-			unsubscriber = provider.Subscribe(this);
-		}
-
-		public virtual void Unsubscribe()
-		{
-			unsubscriber.Dispose();
-		}
-
-		public void OnCompleted()
-		{
-
-		}
-
-		public void OnError(Exception error)
-		{
-
-		}
-
 		public void OnNext(string value)
 		{
-			Console.SetCursorPosition(0, 2);
-
-			Console.WriteLine($"Own: {value}");
+			Console.ForegroundColor = ConsoleColor.DarkYellow;
+			Console.WriteLine($"OwnObserver({_name}): {value}");
 		}
+
+		public void OnError(Exception error) { }
+
+		public void OnCompleted() { }
 	}
 }

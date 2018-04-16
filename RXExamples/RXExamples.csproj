@@ -75,8 +75,9 @@
   <ItemGroup>
     <Compile Include="Application.cs" />
     <Compile Include="AutoFacModule.cs" />
+    <Compile Include="Own\OwnSubject.cs" />
     <Compile Include="Timers\Clock.cs" />
-    <Compile Include="Timers\Clock2.cs" />
+    <Compile Include="Timers\Interval5s.cs" />
     <Compile Include="Timers\Interval1s.cs" />
     <Compile Include="Own\OwnObservable.cs" />
     <Compile Include="Own\OwnObserver.cs" />

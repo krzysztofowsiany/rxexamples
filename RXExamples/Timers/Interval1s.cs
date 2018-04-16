@@ -5,7 +5,7 @@ namespace RXExamples.Timers
 {
 	public class Interval1s
 	{
-		public IObservable<long> Timer { get; private set; }
+		public IObservable<long> Timer { get; }
 
 		public Interval1s()
 		{
