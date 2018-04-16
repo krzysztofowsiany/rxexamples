@@ -7,7 +7,7 @@ using WpfRXExamples.Observables;
 
 namespace WpfRXExamples.Observers
 {
-	public class CalculateObserver : IObserver<IEvent>
+	public class CalculateObserver : IObserver<CalculationStartedEvent>
 	{
 		private EventObservable _eventBus;
 
@@ -16,11 +16,9 @@ namespace WpfRXExamples.Observers
 			_eventBus = eventBus;
 		}
 
-		public void OnNext(IEvent @event)
+		public void OnNext(CalculationStartedEvent calculationStartedEvent)
 		{
 			Debug.WriteLine("Observer: " + GetType());
-
-			var calculationStartedEvent = (CalculationStartedEvent)@event;
 
 			var startCalculation = DateTime.UtcNow.Ticks;
 

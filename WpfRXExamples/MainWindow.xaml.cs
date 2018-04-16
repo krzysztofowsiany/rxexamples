@@ -5,6 +5,7 @@ using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 using WpfRXExamples.Events;
 using WpfRXExamples.ExtensionsMethods;
 using WpfRXExamples.Observables;
@@ -26,11 +27,11 @@ namespace WpfRXExamples
 			_random = new Random(DateTime.Now.Millisecond);
 			_eventBus = new EventObservable();
 
-			//IntervalStream();
-			//TextBoxStream();
+			IntervalStream();
+			TextBoxStream();
 
-			//ExitButtonStream();
-			//FibonacciButtonStream();
+			ExitButtonStream();
+			FibonacciButtonStream();
 		}
 
 		private void IntervalStream()
@@ -42,8 +43,7 @@ namespace WpfRXExamples
 
 			//Subscriptions
 			var subscription1 = stream
-				.ObserveOnDispatcher()
-				.SubscribeOnDispatcher()
+				.ObserveOn(Dispatcher.CurrentDispatcher)
 				.Subscribe(tick => Label1.Content = tick);
 			_subscribents.Add(subscription1);
 
@@ -132,6 +132,7 @@ namespace WpfRXExamples
 			//Subscriptions to event bus
 			var subscribent2 = _eventBus
 				.Where(x => x is CalculationStartedEvent)
+				.OfType<CalculationStartedEvent>()
 				.Subscribe(new CalculateObserver(_eventBus));
 			_subscribents.Add(subscribent2);
 
@@ -139,7 +140,6 @@ namespace WpfRXExamples
 				.Where(x => x is CalculatedEvent)
 				.OfType<CalculatedEvent>()
 				.ObserveOnDispatcher()
-				.SubscribeOnDispatcher()
 				.Subscribe(calculatedEvent =>
 				{
 					var time = TimeSpan.FromTicks(calculatedEvent.Time);
