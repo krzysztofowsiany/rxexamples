@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Reactive;
 using System.Reactive.Linq;
 
 namespace RXExamples
@@ -14,17 +16,29 @@ namespace RXExamples
 
 			_subscribent1 = interval
 				.TimeInterval()
-				.Subscribe(tick =>
-				{
-					Console.WriteLine($"Tick 1: {tick}");
-				});
+				.Subscribe(OnNext, OnError, OnCompleted);
 
 			_subscribent2 = interval
 				.Sample(TimeSpan.FromSeconds(4))
 				.Subscribe(tick =>
 				{
-					Console.WriteLine($"Tick 2: {tick}");
+					Console.WriteLine($"Tick: {tick}");
 				});
+		}
+
+		private void OnNext(TimeInterval<long> timeInterval)
+		{
+			Console.WriteLine($"TimeInterval: {timeInterval}");
+		}
+
+		private void OnError(Exception e)
+		{
+			Debug.WriteLine(e);
+		}
+
+		private void OnCompleted()
+		{
+			Console.WriteLine("Completed");
 		}
 
 		public void WaitForKeyPress()
