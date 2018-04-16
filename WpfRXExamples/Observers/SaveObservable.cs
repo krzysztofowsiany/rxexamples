@@ -4,11 +4,11 @@ using WpfRXExamples.Events;
 
 namespace WpfRXExamples.Observers
 {
-	public class SaveObservable : IObserver<IEvent>
+	public class SaveObservable : IObserver<ApplicationExitedEvent>
 	{
-		public void OnNext(IEvent @event)
+		public void OnNext(ApplicationExitedEvent applicationExitedEvent)
 		{
-			Debug.WriteLine("Observer: " + GetType());
+			Debug.WriteLine("Observer: SaveObservable");
 
 			Debug.WriteLine("Save data before exit");
 		}

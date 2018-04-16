@@ -4,13 +4,11 @@ using WpfRXExamples.Events;
 
 namespace WpfRXExamples.Observers
 {
-	public class ExitObserver : IObserver<IEvent>
+	public class ExitObserver : IObserver<ApplicationExitedEvent>
 	{
-		public void OnNext(IEvent @event)
+		public void OnNext(ApplicationExitedEvent applicationExitedEvent)
 		{
-			Debug.WriteLine("Observer: " + GetType());
-
-			var applicationExitedEvent = (ApplicationExitedEvent)@event;
+			Debug.WriteLine("Observer: ExitObserver");
 
 			Environment.Exit(applicationExitedEvent.ExitCode);
 		}

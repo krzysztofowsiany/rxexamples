@@ -1,11 +1,10 @@
 ﻿<Window x:Class="WpfRXExamples.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfRXExamples"
         Title="MainWindow" Height="350" Width="617.227"
-        Name="TestWindow"  FontSize="20">
+        Name="TestWindow"  FontSize="20"
+        Topmost="True"
+        >
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
