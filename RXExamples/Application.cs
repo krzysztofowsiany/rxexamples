@@ -16,6 +16,7 @@ namespace RXExamples
 
 			_subscribent1 = interval
 				.TimeInterval()
+				.Take(10)
 				.Subscribe(OnNext, OnError, OnCompleted);
 
 			_subscribent2 = interval
